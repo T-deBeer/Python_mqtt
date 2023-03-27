@@ -17,6 +17,7 @@ def connect_mqtt():
 
     client = mqtt.Client(client_id)
     client.on_connect = on_connect
+    
     client.connect(broker, port)
     return client
 
@@ -33,7 +34,7 @@ def publish(client):
             print(f"Send `{msg}` to topic `{topic}`")
         else:
             print(f"Failed to send message to topic {topic}")
-            
+
         msg_count += 1
 
 
