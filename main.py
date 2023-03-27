@@ -17,25 +17,25 @@ def connect_mqtt():
 
     client = mqtt.Client(client_id)
     client.on_connect = on_connect
-    
+
     client.connect(broker, port)
     return client
 
 
+# Publish to Dashboard aka Sending Data
 def publish(client):
-    msg_count = 0
-    while True:
+    while True:  # Loops infinitely
         time.sleep(1)
-        msg = random.randint(0, 4096)
+        msg = random.randint(0, 4096)  # Generates random Analog reading
+        # Sends the message(random integer) data to topic = 'Topic/PhotoResistor'
         result = client.publish(topic, msg)
+        # Checks wheter or not the message was sent successfully
         status = result[0]
 
         if status == 0:
             print(f"Send `{msg}` to topic `{topic}`")
         else:
             print(f"Failed to send message to topic {topic}")
-
-        msg_count += 1
 
 
 def run():
