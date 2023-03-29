@@ -1,0 +1,6 @@
+PYTHON 3.11.1
+
+Requirements:
+=============
+Flask => 2.2.3 (pip install flask)
+paho-mqtt => 1.6.1 (pip install paho-mqtt)
